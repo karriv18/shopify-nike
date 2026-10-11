@@ -1,0 +1,36 @@
+<head>
+  {{ 'header.css' | asset_url | stylesheet_tag }}
+</head>
+<header class="header-nav">
+  <div>
+    <a href="">
+      <img
+        width="80"
+        height="50"
+        loading="lazy"
+        src="{{' nike.jpg ' | asset_url}}"
+      />
+    </a>
+  </div>
+  <div>
+    <ul class="middle-nav-bar">
+      {% for link in linklists['main-menu'].links %}
+        <li>{{ link.title | link_to: link.url }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="right-nav-items">
+    <form action="/search">
+      <input class="search-nav" placeholder="Search" type="search" />
+    </form>
+
+    <a href="/">
+      <img
+        width="40"
+        height="40"
+        loading="lazy"
+        src="{{'d.png' | asset_url }}"
+      />
+    </a>
+  </div>
+</header>
