@@ -1,7 +1,7 @@
 <section class="all-collections">
   <h1>Featured Collections</h1>
   <div class="collection-container">
-    <div class="collection-wrapper">
+    <div class="all-collections-wrapper">
       {% for collection in collections %}
         <div class="collection-card">
           <img
@@ -16,7 +16,7 @@
   </div>
 </section>
 <style>
-   .all-collections {
+ .all-collections {
     background: {{ section.settings.background }}
     ;
     color: {{ section.settings.text_color }}
@@ -31,7 +31,7 @@
 
   .all-collections-wrapper {
     display: flex;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Add smooth transition effect */
   }
 
   .collection-card {
@@ -52,6 +52,28 @@
     text-decoration: underline;
   }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const wrapper = document.querySelector('.all-collections-wrapper');
+    const scrollLeftButton = document.querySelector('.scroll-left');
+    const scrollRightButton = document.querySelector('.scroll-right');
+
+    scrollLeftButton.addEventListener('click', function () {
+      wrapper.scrollBy({
+        left: -300, // Adjust based on your card width
+        behavior: 'smooth',
+      });
+    });
+
+    scrollRightButton.addEventListener('click', function () {
+      wrapper.scrollBy({
+        left: 300, // Adjust based on your card width
+        behavior: 'smooth',
+      });
+    });
+  });
+</script>
+
 {% schema %}
 {
   "name": "all-collections",
